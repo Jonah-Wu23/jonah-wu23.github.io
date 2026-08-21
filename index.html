@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吴宗河 Zonghe Wu · AI Product · Agent · Mobility</title>
+  <meta name="description" content="吴宗河（Zonghe Wu）个人主页。AI Product · Agent · Mobility。做导航 Agent 原型，也做过真实路网决策系统。">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jonah-wu23.github.io">
+  <meta property="og:title" content="吴宗河 Zonghe Wu · AI Product · Agent · Mobility">
+  <meta property="og:description" content="做导航 Agent 原型，也做过真实路网决策系统。">
+  <meta property="og:image" content="og.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://jonah-wu23.github.io">
+  <meta name="twitter:title" content="吴宗河 Zonghe Wu · AI Product · Agent · Mobility">
+  <meta name="twitter:description" content="做导航 Agent 原型，也做过真实路网决策系统。">
+  <meta name="twitter:image" content="og.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Scripts -->
+  <script defer src="assets/js/particles.js"></script>
+  <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+
+  <!-- Ambient visual layers -->
+  <div class="bg-noise" aria-hidden="true"></div>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- 1. Floating Capsule Navigation -->
+  <header class="site-nav">
+    <nav class="nav-pill" aria-label="页面导航">
+      <a href="#hero" class="nav-link is-active">吴宗河</a>
+      <a href="#projects" class="nav-link">项目</a>
+      <a href="#opensource" class="nav-link">开源</a>
+      <a href="#contact" class="nav-link">联系</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 2. Hero Section -->
+    <section id="hero" class="hero">
+      <canvas id="particle-hero" aria-hidden="true"></canvas>
+      <div class="container hero__content">
+        <h1 class="hero__title reveal">吴宗河 Zonghe Wu</h1>
+        <p class="hero__tagline reveal">
+          AI Product · <span class="grad-text">Agent</span> · Mobility
+        </p>
+        <p class="hero__bio reveal">
+          做导航 Agent 原型，也做过真实路网决策系统。
+        </p>
+
+        <div class="social-row reveal">
+          <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer">B 站</a>
+          <a href="mailto:3582584159@qq.com">邮箱</a>
+          <!-- TODO: 上线前回填作品集链接 -->
+          <a href="#portfolio">作品集</a>
+        </div>
+
+        <div class="hero__actions reveal" style="margin-top: 0.5rem;">
+          <a href="#projects" class="btn btn--primary">查看四个项目</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Projects Section -->
+    <section id="projects" class="section">
+      <h2 class="section__title reveal">项目经历</h2>
+
+      <!-- 01 Navigation Buddy -->
+      <article class="project-card reveal">
+        <div class="project-card__index" aria-hidden="true">01</div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">Navigation Buddy · 导航 Agent 原型</h3>
+          <span class="chip">可在线体验</span>
+        </div>
+        <p class="project-card__desc">
+          偏好记忆 / 可解释路由 / 软约束。探索从“最快路线”到“懂我的路线”，支持自然语言偏好解析、软约束权衡与路线决策解释。
+        </p>
+        <div class="project-card__actions">
+          <a href="https://navigation-buddy.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn--primary">在线体验</a>
+          <a href="https://github.com/Jonah-Wu23/navigation-buddy" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
+        </div>
+      </article>
+
+      <!-- 02 留乘智行 -->
+      <article class="project-card reveal">
+        <div class="project-card__index" aria-hidden="true">02</div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">留乘智行 · 需求响应公交调度</h3>
+          <span class="chip">开源仓库</span>
+        </div>
+        <p class="project-card__desc">
+          OSM 路网 / 候选路径综合代价 / GNN-RL / 270 万真实请求。基于 OSM 三层图结构与曼哈顿真实出行订单，构建流失感知与边级综合代价评估机制。
+        </p>
+        <div class="project-card__actions">
+          <a href="https://github.com/Jonah-Wu23/Churn-Aware-GNN-RL" target="_blank" rel="noopener noreferrer" class="btn btn--primary">查看仓库</a>
+        </div>
+      </article>
+
+      <!-- 03 HSR Partner Harness -->
+      <article class="project-card reveal">
+        <div class="project-card__index" aria-hidden="true">03</div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">HSR Partner Harness · 角色 × Agent 双轨搭档</h3>
+          <span class="chip">项目站</span>
+        </div>
+        <p class="project-card__desc">
+          委派执行 / 语音人格化 / 可监督。构建“用户 ↔ 人格化 Buddy → 结构化委派 → Agent 真实执行”链路，提供语音交互与确定性安全沙箱。
+        </p>
+        <div class="project-card__actions">
+          <a href="https://jonah-wu23.github.io/HSR_Partner_Harness/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">访问项目站</a>
+          <a href="https://github.com/Jonah-Wu23/HSR_Partner_Harness" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
+        </div>
+      </article>
+
+      <!-- 04 Anima Companion -->
+      <article class="project-card reveal">
+        <div class="project-card__index" aria-hidden="true">04</div>
+        <div class="project-card__header">
+          <h3 class="project-card__title">Anima Companion · 多模态 3D 陪伴</h3>
+          <span class="chip">产品在线</span>
+        </div>
+        <p class="project-card__desc">
+          0→1 上线 / 真实用户 / 19 名用户付费（VIP / 自愿赞助）。完成多模态语音与 3D 角色互动 MVP 上线。通过日志定位修复线上问题，获得 19 名用户付费（VIP / 自愿赞助）。
+        </p>
+        <div class="project-card__actions">
+          <a href="https://anima-companion.fun" target="_blank" rel="noopener noreferrer" class="btn btn--primary">访问产品</a>
+          <a href="https://github.com/Jonah-Wu23/anima-companion" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4. Open Source Section -->
+    <section id="opensource" class="section">
+      <h2 class="section__title reveal">开源生态</h2>
+      <div class="oss-list">
+        <a href="https://github.com/Jonah-Wu23/dsh-fullstack-pack" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
+          <div class="oss-item__main">
+            <span class="oss-item__name">dsh-fullstack-pack</span>
+            <span class="oss-item__desc">DeepSeek Harness 全栈开发整合包：8 个核心 dsh 插件与 Tauri 桌面原生壳，内置便携 Node 运行时，国内镜像一键分发。</span>
+          </div>
+          <span class="oss-item__link">仓库 ↗</span>
+        </a>
+        <a href="https://github.com/Jonah-Wu23/oh-my-dsh" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
+          <div class="oss-item__main">
+            <span class="oss-item__name">oh-my-dsh</span>
+            <span class="oss-item__desc">固定工具面与会话事件日志管理，提供长程恢复和上下文压缩机制。</span>
+          </div>
+          <span class="oss-item__link">仓库 ↗</span>
+        </a>
+        <a href="https://github.com/Jonah-Wu23/dsh-bg-carousel" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
+          <div class="oss-item__main">
+            <span class="oss-item__name">dsh-bg-carousel</span>
+            <span class="oss-item__desc">DSH 桌面背景轮播与轻量化视效管理组件。</span>
+          </div>
+          <span class="oss-item__link">仓库 ↗</span>
+        </a>
+        <a href="https://github.com/Jonah-Wu23/dsh-web-wrapper" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
+          <div class="oss-item__main">
+            <span class="oss-item__name">dsh-web-wrapper</span>
+            <span class="oss-item__desc">DSH Web 桌面分发壳与进程生命周期管理工具。</span>
+          </div>
+          <span class="oss-item__link">仓库 ↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. Dark Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="container reveal">
+      <div class="site-footer__main">
+        <div class="site-footer__contacts">
+          <p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.25rem;">联系方式</p>
+          <p><a href="tel:13646028118">电话：13646028118</a></p>
+          <p><a href="mailto:3582584159@qq.com">邮箱：3582584159@qq.com</a></p>
+        </div>
+        <div class="site-footer__links">
+          <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer">B 站</a>
+          <!-- TODO: 上线前回填作品集链接 -->
+          <a href="#portfolio">作品集</a>
+        </div>
+      </div>
+      <div class="site-footer__copy">
+        <p>© <span id="year">2026</span> Zonghe Wu · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
