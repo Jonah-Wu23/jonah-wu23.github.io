@@ -21,9 +21,9 @@
     driftSpeedMax: 0.35,
 
     // Density and particle counts
-    densityDivisor: 9000,
-    maxParticlesDesktop: 420,
-    maxParticlesMobile: 210,
+    densityDivisor: 5000,
+    maxParticlesDesktop: 700,
+    maxParticlesMobile: 350,
 
     // Particle sizes (radius in px)
     minSize: 1.0,
