@@ -179,15 +179,9 @@
     - 2023.09 – 2027.06（预计毕业） / 2023.09 – 2027.06 (Expected)
     - 工学学士（交通运输）/ 理学学士（交通、城市规划与环境政策） / B.Eng. in Transportation / B.Sc. in Transport, City Planning & Environmental Policy
 - **实习经历 / Internships**:
-  - 厦门路桥工程设计院有限公司（原厦门市惟成市政工程设计院） / Xiamen Weicheng Municipal Engineering Design Institute
+  - 厦门唯诚市政工程设计院有限公司 / Xiamen Weicheng Municipal Engineering Design Institute
     - 2026.01 – 2026.02 · 交通规划与智能仿真实习生 / Transportation Planning & Simulation Intern
     - 搭建 SUMO 复杂交叉口微观仿真，通过交通语义过滤异常样本并优化配时，平均延误降低 10.7%。 / Built SUMO intersection models, removed anomalous samples via semantic filtering, and reduced delays.
-  - 天度（厦门）科技股份有限公司 / Tiandu (Xiamen) Technology Co., Ltd.
-    - 2025.07 – 2025.08 · 虚拟仿真与 AI 研发实习生 / Virtual Simulation & AI R&D Intern
-    - 负责 AI 虚拟仿真教学平台的前端交互界面开发与功能测试。 / Developed and tested front-end interfaces for an AI simulation platform.
-  - 龙海泰尔福德汽车电子研发有限公司 / Longhai Telford Automotive Electronics R&D Co., Ltd.
-    - 2025.01 – 2025.02 · 汽车智能算法研发实习生 / Automotive Algorithm R&D Intern
-    - 参与整车控制仿真模型测试数据处理与可视化，协助算法联调。 / Processed simulation test data and assisted in vehicle algorithm debugging.
 
 ---
 
