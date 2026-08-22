@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>吴宗河 Zonghe Wu · AI Product · Agent · Mobility</title>
   <meta name="description" content="吴宗河（Zonghe Wu）个人主页。AI Product · Agent · Mobility。让空间智能看清前路，让AI伴随读懂人心。">
+  <meta name="keywords" content="吴宗河, Jonah Wu, AI Product, Agent, Intelligent Transportation, Mobility Digital Twin, Next.js, Three.js">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://jonah-wu23.github.io">
+  <meta property="og:url" content="https://jonah-wu23.github.io/">
   <meta property="og:title" content="吴宗河 Zonghe Wu · AI Product · Agent · Mobility">
   <meta property="og:description" content="让空间智能看清前路，让AI伴随读懂人心。">
   <meta property="og:image" content="og.png">
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://jonah-wu23.github.io">
+  <meta name="twitter:url" content="https://jonah-wu23.github.io/">
   <meta name="twitter:title" content="吴宗河 Zonghe Wu · AI Product · Agent · Mobility">
   <meta name="twitter:description" content="让空间智能看清前路，让AI伴随读懂人心。">
   <meta name="twitter:image" content="og.png">
@@ -23,187 +24,552 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Fonts: Inter -->
+  <!-- Google Fonts Preconnect (Fallback & Typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/main.css">
 
-  <!-- Scripts -->
-  <script defer src="assets/js/particles.js"></script>
+  <!-- Vendor Scripts (Local Three.js r158) -->
+  <script defer src="assets/vendor/three.min.js"></script>
+  <script defer src="assets/js/particles-blueprint.js"></script>
   <script defer src="assets/js/main.js"></script>
 </head>
 <body>
 
-  <!-- Ambient visual layers -->
-  <div class="bg-noise" aria-hidden="true"></div>
-  <div class="ambient-glow" aria-hidden="true"></div>
+  <!-- Background Blueprint Particle Canvas -->
+  <div id="canvas-wrap" aria-hidden="true"></div>
 
-  <!-- 1. Floating Capsule Navigation -->
-  <header class="site-nav">
-    <nav class="nav-pill" aria-label="页面导航">
-      <a href="#hero" class="nav-link is-active">吴宗河</a>
-      <a href="#projects" class="nav-link">项目</a>
-      <a href="#opensource" class="nav-link">开源</a>
-      <a href="#contact" class="nav-link">联系</a>
+  <!-- Sticky Minimal Header -->
+  <header class="site-header">
+    <a href="#hero" class="site-brand">
+      <span class="brand-badge">ZW</span>
+      <span>吴宗河 / JONAH WU</span>
+    </a>
+    <nav aria-label="全站导航">
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#about">关于 / About</a></li>
+        <li class="nav-item"><a href="#work">作品 / Work</a></li>
+        <li class="nav-item"><a href="#experience">经历 / Exp</a></li>
+        <li class="nav-item"><a href="#skills">技能 / Skills</a></li>
+        <li class="nav-item"><a href="#now">现状 / Now</a></li>
+        <li class="nav-item"><a href="#contact">联系 / Contact</a></li>
+      </ul>
     </nav>
   </header>
 
-  <main>
-    <!-- 2. Hero Section -->
-    <section id="hero" class="hero">
-      <canvas id="particle-hero" aria-hidden="true"></canvas>
-      <div class="container hero__content">
-        <h1 class="hero__title reveal">吴宗河 Zonghe Wu</h1>
-        <p class="hero__tagline reveal">
-          AI Product · <span class="grad-text">Agent</span> · Mobility
-        </p>
-        <p class="hero__bio reveal">
-          让空间智能看清前路，让AI伴随读懂人心。
-        </p>
+  <div class="content-wrapper">
+    <main>
 
-        <div class="social-row reveal">
-          <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer">B 站</a>
-          <a href="mailto:3582584159@qq.com">邮箱</a>
-          <a href="https://jonah-wu23.github.io/portfolio/" target="_blank" rel="noopener noreferrer">作品集</a>
-        </div>
-
-        <div class="hero__actions reveal" style="margin-top: 0.5rem;">
-          <a href="#projects" class="btn btn--primary">查看四个项目</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Projects Section -->
-    <section id="projects" class="section">
-      <h2 class="section__title reveal">项目经历</h2>
-
-      <!-- 01 Navigation Buddy -->
-      <article class="project-card reveal">
-        <div class="project-card__index" aria-hidden="true">01</div>
-        <div class="project-card__header">
-          <h3 class="project-card__title">Navigation Buddy · 导航 Agent 原型</h3>
-          <span class="chip">可在线体验</span>
-        </div>
-        <p class="project-card__desc">
-          该项目开发Navigation Buddy智能导航Demo，将用户自然语言偏好解析为可执行的软约束与长期记忆，并据此重排候选路线。系统支持偏好跨场景自动生效、阈值调整与记忆管理，让导航从“最快最短”走向“更懂用户”。
-        </p>
-        <div class="project-card__actions">
-          <a href="https://navigation-buddy.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn--primary">在线体验</a>
-          <a href="https://github.com/Jonah-Wu23/navigation-buddy" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
-        </div>
-      </article>
-
-      <!-- 02 留乘智行 -->
-      <article class="project-card reveal">
-        <div class="project-card__index" aria-hidden="true">02</div>
-        <div class="project-card__header">
-          <h3 class="project-card__title">留乘智行 · 需求响应公交调度系统</h3>
-          <span class="chip">开源仓库</span>
-        </div>
-        <p class="project-card__desc">
-          该项目提出面向需求响应公交的智能调度系统，融合乘客流失感知、尾部风险控制与空间公平机制，结合图强化学习实现动态路径优化与运力分配。系统提升公交服务效率，降低小汽车出行需求，为城市绿色交通提供技术方案。  
-        </p>
-        <div class="project-card__actions">
-          <a href="https://github.com/Jonah-Wu23/Churn-Aware-GNN-RL" target="_blank" rel="noopener noreferrer" class="btn btn--primary">查看仓库</a>
-        </div>
-      </article>
-
-      <!-- 03 HSR Partner Harness -->
-      <article class="project-card reveal">
-        <div class="project-card__index" aria-hidden="true">03</div>
-        <div class="project-card__header">
-          <h3 class="project-card__title">HSR Partner Harness · 角色 × Agent 双轨工作台</h3>
-          <span class="chip">项目网站</span>
-        </div>
-        <p class="project-card__desc">
-          该项目开发HSR Partner Harness双轨AI工作台，将角色陪伴对话与本地编程Agent整合进同一会话。用户可与角色讨论需求，角色会自主委派任务，由Codex等Agent助手真实操作项目文件，再将结果回传给角色继续协作。
-        </p>
-        <div class="project-card__actions">
-          <a href="https://jonah-wu23.github.io/HSR_Partner_Harness/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">访问项目网站</a>
-          <a href="https://www.bilibili.com/video/BV1YR8L61EYs" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">演示视频</a>
-          <a href="https://github.com/Jonah-Wu23/HSR_Partner_Harness" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
-        </div>
-      </article>
-
-      <!-- 04 Anima Companion -->
-      <article class="project-card reveal">
-        <div class="project-card__index" aria-hidden="true">04</div>
-        <div class="project-card__header">
-          <h3 class="project-card__title">Anima Companion · 多模态 3D 陪伴网站</h3>
-          <span class="chip">产品在线</span>
-        </div>
-        <p class="project-card__desc">
-          该项目开发二次元情感陪伴助手，融合LLM、语音交互与3D角色技术，支持文字与语音聊天、多角色切换、触摸互动、换装与回忆相册，为用户提供沉浸式、个性化的虚拟角色陪伴体验。
-        </p>
-        <div class="project-card__actions">
-          <a href="https://anima-companion.fun" target="_blank" rel="noopener noreferrer" class="btn btn--primary">访问产品</a>
-          <a href="https://www.bilibili.com/video/BV1STfPBgEWV" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">演示视频</a>
-          <a href="https://github.com/Jonah-Wu23/anima-companion" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">开源仓库</a>
-        </div>
-      </article>
-    </section>
-
-    <!-- 4. Open Source Section -->
-    <section id="opensource" class="section">
-      <h2 class="section__title reveal">开源生态（Deepseek Harness 插件开发）</h2>
-      <div class="oss-list">
-        <a href="https://github.com/Jonah-Wu23/dsh-fullstack-pack" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
-          <div class="oss-item__main">
-            <span class="oss-item__name">dsh-fullstack-pack</span>
-            <span class="oss-item__desc">DeepSeek Harness 全栈开发整合包：8 个核心 dsh 插件与 Tauri 桌面原生壳，内置便携 Node 运行时，国内镜像一键分发。</span>
+      <!-- 1. Hero Section -->
+      <section id="hero" class="hero">
+        <div class="hero-meta">
+          <div class="hero-meta-left">
+            <span>P.01 / 2027</span>
           </div>
-          <span class="oss-item__link">仓库 ↗</span>
-        </a>
-        <a href="https://github.com/Jonah-Wu23/oh-my-dsh" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
-          <div class="oss-item__main">
-            <span class="oss-item__name">oh-my-dsh</span>
-            <span class="oss-item__desc">固定工具面与会话事件日志管理，提供长程恢复和上下文压缩机制。</span>
+          <div class="hero-meta-right">
+            <span>AI Product · Intelligent Transportation · Creative Technology</span>
           </div>
-          <span class="oss-item__link">仓库 ↗</span>
-        </a>
-        <a href="https://github.com/Jonah-Wu23/dsh-bg-carousel" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
-          <div class="oss-item__main">
-            <span class="oss-item__name">dsh-bg-carousel</span>
-            <span class="oss-item__desc">DSH 桌面背景轮播与轻量化视效管理组件。</span>
-          </div>
-          <span class="oss-item__link">仓库 ↗</span>
-        </a>
-        <a href="https://github.com/Jonah-Wu23/dsh-web-wrapper" target="_blank" rel="noopener noreferrer" class="oss-item reveal">
-          <div class="oss-item__main">
-            <span class="oss-item__name">dsh-web-wrapper</span>
-            <span class="oss-item__desc">DSH Web 桌面分发壳与进程生命周期管理工具。</span>
-          </div>
-          <span class="oss-item__link">仓库 ↗</span>
-        </a>
-      </div>
-    </section>
-  </main>
+        </div>
 
-  <!-- 5. Dark Footer -->
-  <footer id="contact" class="site-footer">
-    <div class="container reveal">
-      <div class="site-footer__main">
-        <div class="site-footer__contacts">
-          <p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.25rem;">联系方式</p>
-          <p><a href="tel:13646028118">电话：13646028118</a></p>
-          <p><a href="mailto:3582584159@qq.com">邮箱：3582584159@qq.com</a></p>
+        <div class="hero-body">
+          <div class="hero-name-wrap">
+            <h1 class="hero-name">吴宗河</h1>
+            <p class="hero-name-sub">ZONGHE WU / JONAH WU</p>
+          </div>
+
+          <div class="hero-tagline-box">
+            <p class="hero-tagline">让空间智能看清前路，让AI伴随读懂人心。</p>
+            <p class="hero-tagline-en" lang="en">Making spatial intelligence clear on the road ahead, making companion AI understand human hearts.</p>
+          </div>
+
+          <div class="hero-identity">
+            <p>2027 届本科 · 长安大学 × 爱尔兰都柏林大学 · 福建厦门</p>
+            <p class="en-sub" lang="en" style="margin-top: 0.15rem;">Class of 2027 · Chang'an Univ. × University College Dublin · Xiamen, China</p>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">查看作品 / Work</a>
+            <a href="assets/files/CV_ZongheWu.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">下载简历 / CV (PDF)</a>
+
+            <div class="hero-socials">
+              <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer" class="hero-social-link">GitHub ↗</a>
+              <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer" class="hero-social-link">B 站 ↗</a>
+              <a href="mailto:3582584159@qq.com" class="hero-social-link">Email ↗</a>
+            </div>
+          </div>
         </div>
-        <div class="site-footer__links">
-          <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer">B 站</a>
-          <a href="https://jonah-wu23.github.io/portfolio/" target="_blank" rel="noopener noreferrer">作品集</a>
+
+        <!-- Hero Marquee Ticker -->
+        <div class="marquee-container" aria-hidden="true">
+          <div class="marquee-track">
+            <span>长安大学 × 都柏林大学 · 2027 届 · 交通 × AI 产品 · 福建厦门 · CHANG'AN UNIV. × UCD · CLASS OF 2027 · AI PRODUCT · XIAMEN · </span>
+            <span>长安大学 × 都柏林大学 · 2027 届 · 交通 × AI 产品 · 福建厦门 · CHANG'AN UNIV. × UCD · CLASS OF 2027 · AI PRODUCT · XIAMEN · </span>
+          </div>
         </div>
+      </section>
+
+      <!-- 2. About Section -->
+      <section id="about" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(01)</div>
+          <h2 class="section-title">关于我</h2>
+          <p class="section-title-en" lang="en">ABOUT ME</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-headline">
+            在交通与 AI 的<br>交叉口造产品
+            <span class="en-sub en-sub-blue" lang="en">BUILDING AT THE INTERSECTION OF MOBILITY & AI</span>
+          </div>
+          <div class="about-text-col">
+            <div class="bilingual-para">
+              <p>我是吴宗河，长安大学与爱尔兰都柏林大学双学位本科生（交通运输 / 交通、城市规划与环境政策），2027 届，坐标福建厦门。</p>
+              <p class="en-sub" lang="en">I am Zonghe Wu, an undergraduate in a dual-degree program at Chang'an University and University College Dublin (Transportation / Transport, City Planning & Environmental Policy), graduating in 2027, based in Xiamen.</p>
+            </div>
+            <div class="bilingual-para">
+              <p>我专注于交通与 AI 产品的交叉领域。在复杂交通系统与生成式智能体之间，把工程算法与真实场景连接起来，转化为能够稳定运行、具备可引导性的交互产品。</p>
+              <p class="en-sub" lang="en">I focus on the intersection of intelligent transportation and AI products. Working between complex mobility systems and generative agents, I turn engineering methods into reliable and steerable products.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Work Section -->
+      <section id="work" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(02)</div>
+          <h2 class="section-title">作品与项目</h2>
+          <p class="section-title-en" lang="en">SELECTED WORK & PROJECTS</p>
+        </div>
+
+        <!-- Direction 01: AI & Agents -->
+        <div class="direction-group">
+          <div class="direction-header">
+            <span class="direction-title">01 / 智能体与人机协作</span>
+            <span class="direction-en" lang="en">AI & AGENTS</span>
+          </div>
+          <div class="projects-table-header">
+            <div>编号</div>
+            <div>项目与角色</div>
+            <div>说明与链接</div>
+          </div>
+
+          <!-- Project 01: HSR Partner Harness -->
+          <article class="project-item">
+            <div class="project-num">(01)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">HSR Partner Harness</h3>
+              <p class="en-sub" lang="en">Dual-Track AI Workspace</p>
+              <p class="project-role-badge">独立设计与全栈开发 / Solo Developer</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目开发HSR Partner Harness双轨AI工作台，将角色陪伴对话与本地编程Agent整合进同一会话。用户可与角色讨论需求，角色会自主委派任务，由Codex等Agent助手真实操作项目文件，再将结果回传给角色继续协作。</p>
+              <p class="project-desc-en" lang="en">A dual-track AI workspace integrating character dialogue with local coding agents in one session. Users discuss tasks with a companion character, which delegates file edits to agents and reviews the results.</p>
+              <div class="project-actions">
+                <a href="https://jonah-wu23.github.io/HSR_Partner_Harness/" target="_blank" rel="noopener noreferrer" class="project-link-pill">在线体验 ↗</a>
+                <a href="https://www.bilibili.com/video/BV1YR8L61EYs" target="_blank" rel="noopener noreferrer" class="project-link-pill">演示视频 ↗</a>
+                <a href="https://github.com/Jonah-Wu23/HSR_Partner_Harness" target="_blank" rel="noopener noreferrer" class="project-link-pill">开源仓库 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: Anima Companion -->
+          <article class="project-item">
+            <div class="project-num">(02)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">Anima Companion</h3>
+              <p class="en-sub" lang="en">Multimodal 3D Companion</p>
+              <p class="project-role-badge">产品设计与全栈开发 / Product Lead</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目开发二次元情感陪伴助手，融合LLM、语音交互与3D角色技术，支持文字与语音聊天、多角色切换、触摸互动、换装与回忆相册，为用户提供沉浸式、个性化的虚拟角色陪伴体验。</p>
+              <p class="project-desc-en" lang="en">An emotional companion assistant combining LLMs, voice interaction, and 3D character rendering. Features voice chat, character switching, touch feedback, and costume options. Built as an MVP in 4 weeks, with 19 paying users.</p>
+              <div class="project-actions">
+                <a href="https://anima-companion.fun" target="_blank" rel="noopener noreferrer" class="project-link-pill">访问产品 ↗</a>
+                <a href="https://www.bilibili.com/video/BV1STfPBgEWV" target="_blank" rel="noopener noreferrer" class="project-link-pill">演示视频 ↗</a>
+                <a href="https://github.com/Jonah-Wu23/anima-companion" target="_blank" rel="noopener noreferrer" class="project-link-pill">开源仓库 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: dsh Ecosystem -->
+          <article class="project-item">
+            <div class="project-num">(03)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">dsh 开源系列</h3>
+              <p class="en-sub" lang="en">DeepSeek Harness Ecosystem</p>
+              <p class="project-role-badge">开源作者 / Creator & Maintainer</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">DeepSeek Harness 模块化开发者工具包：包含 8 个核心插件与 Tauri 桌面原生壳（dsh-fullstack-pack）、长程会话恢复管理工具（oh-my-dsh）、桌面轮播视效组件（dsh-bg-carousel）以及 Web 进程管理壳（dsh-web-wrapper）。</p>
+              <p class="project-desc-en" lang="en">A modular developer toolchain for DeepSeek Harness, including a full-stack pack with 8 plugins and a Tauri desktop wrapper, session recovery managers, and UI components.</p>
+              <div class="project-actions">
+                <a href="https://github.com/Jonah-Wu23/dsh-fullstack-pack" target="_blank" rel="noopener noreferrer" class="project-link-pill">fullstack-pack ↗</a>
+                <a href="https://github.com/Jonah-Wu23/oh-my-dsh" target="_blank" rel="noopener noreferrer" class="project-link-pill">oh-my-dsh ↗</a>
+                <a href="https://github.com/Jonah-Wu23/dsh-bg-carousel" target="_blank" rel="noopener noreferrer" class="project-link-pill">bg-carousel ↗</a>
+                <a href="https://github.com/Jonah-Wu23/dsh-web-wrapper" target="_blank" rel="noopener noreferrer" class="project-link-pill">web-wrapper ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Direction 02: Mobility & Intelligence -->
+        <div class="direction-group">
+          <div class="direction-header">
+            <span class="direction-title">02 / 智慧交通与算法</span>
+            <span class="direction-en" lang="en">MOBILITY & INTELLIGENCE</span>
+          </div>
+          <div class="projects-table-header">
+            <div>编号</div>
+            <div>项目与角色</div>
+            <div>说明与链接</div>
+          </div>
+
+          <!-- Project 04: Navigation Buddy -->
+          <article class="project-item">
+            <div class="project-num">(04)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">Navigation Buddy</h3>
+              <p class="en-sub" lang="en">Steerable Navigation Agent</p>
+              <p class="project-role-badge">核心算法与前端开发 / Algorithm & Frontend</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目开发Navigation Buddy智能导航Demo，将用户自然语言偏好解析为可执行的软约束与长期记忆，并据此重排候选路线。系统支持偏好跨场景自动生效、阈值调整与记忆管理，让导航从“最快最短”走向“更懂用户”。</p>
+              <p class="project-desc-en" lang="en">A navigation agent demo that translates natural-language preferences into executable constraints and memory, reranking candidate routes beyond simple shortest-path heuristics.</p>
+              <div class="project-actions">
+                <a href="https://navigation-buddy.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link-pill">在线体验 ↗</a>
+                <a href="https://github.com/Jonah-Wu23/navigation-buddy" target="_blank" rel="noopener noreferrer" class="project-link-pill">开源仓库 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 05: 留乘智行 -->
+          <article class="project-item">
+            <div class="project-num">(05)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">留乘智行</h3>
+              <p class="en-sub" lang="en">Demand-Responsive Transit System</p>
+              <p class="project-role-badge">研究设计与评估负责 / Research Lead</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目提出面向需求响应公交的智能调度系统，融合乘客流失感知、尾部风险控制与空间公平机制，结合图强化学习实现动态路径优化与运力分配。系统提升公交服务效率，降低小汽车出行需求，为城市绿色交通提供技术方案。</p>
+              <p class="project-desc-en" lang="en">An intelligent DRT dispatching platform using GNN and reinforcement learning. Incorporates passenger churn modeling and tail-risk control, reaching a 70.68% steady service rate.</p>
+              <div class="project-actions">
+                <a href="https://github.com/Jonah-Wu23/Churn-Aware-GNN-RL" target="_blank" rel="noopener noreferrer" class="project-link-pill">开源仓库 ↗</a>
+                <span class="project-tag">交科赛陕西三等奖</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 06: RCMDT -->
+          <article class="project-item">
+            <div class="project-num">(06)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">RCMDT</h3>
+              <p class="en-sub" lang="en">Bus Corridor Digital Twin Calibration</p>
+              <p class="project-role-badge">第一作者 · 研究设计与验证 / First Author</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目提出RCMDT公交走廊数字孪生鲁棒校准框架，通过观测语义审计、贝叶斯优化与IES同化，识别非交通“幽灵拥堵”，提升仿真与真实运行数据的一致性，为公交运行分析与数字孪生可信应用提供支持。</p>
+              <p class="project-desc-en" lang="en">A robust calibration framework for bus corridor digital twins, combining semantic auditing, Bayesian optimization, and iterative ensemble smoothing to eliminate ghost congestion.</p>
+              <div class="project-actions">
+                <span class="project-tag">IEEE SMC 2026 录用 (已录用待发表)</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Direction 03: Research & Experiments -->
+        <div class="direction-group">
+          <div class="direction-header">
+            <span class="direction-title">03 / 科研与工程实践</span>
+            <span class="direction-en" lang="en">RESEARCH & EXPERIMENTS</span>
+          </div>
+          <div class="projects-table-header">
+            <div>编号</div>
+            <div>项目与角色</div>
+            <div>说明与成果</div>
+          </div>
+
+          <!-- Project 07: 长安风领 -->
+          <article class="project-item">
+            <div class="project-num">(07)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">长安风领</h3>
+              <p class="en-sub" lang="en">WindVanguard CFD Simulation Platform</p>
+              <p class="project-role-badge">主开发者 / Principal Developer</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目提出“长安风领（WindVanguard）”数值仿真平台，基于国产开源CFD软件“风雷”与自研代理模型，融合风洞实验数据驱动的LES参数反演技术，实现高可信度桥梁风场模拟与优化。同时开发轻量化交互系统，兼顾工程应用与流体力学科普教学。</p>
+              <p class="project-desc-en" lang="en">An AI-powered CFD simulation platform for bridge wind hazard assessment. Integrates surrogate models with wind-tunnel calibration, reducing evaluation cycles from 4 weeks to 2 days.</p>
+              <div class="project-actions">
+                <span class="project-tag">挑战杯陕西省金奖（省一等奖）</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 08: PaveFormer -->
+          <article class="project-item">
+            <div class="project-num">(08)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">PaveFormer</h3>
+              <p class="en-sub" lang="en">Pavement Performance Forecasting</p>
+              <p class="project-role-badge">第二作者 · 方法设计与评测 / Second Author</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目提出PaveFormer智能路面性能预测模型，利用轻量化Transformer与相关性感知动态通道处理技术，融合路面多源监测数据，实现路面病害演化趋势预测。模型兼顾预测精度与物理一致性，为道路养护决策提供稳定可靠的数据支持。</p>
+              <p class="project-desc-en" lang="en">A Transformer-based pavement deterioration prediction model using correlation-aware dynamic channels and physical monotonicity constraints.</p>
+              <div class="project-actions">
+                <span class="project-tag">WTC 2026 发表</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 09: 全生命周期生态路面系统 -->
+          <article class="project-item">
+            <div class="project-num">(09)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">全生命周期生态路面系统</h3>
+              <p class="en-sub" lang="en">Lifecycle Eco-Pavement System</p>
+              <p class="project-role-badge">核心团队成员 / Core Team Member</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目提出“全生命周期生态路面系统”，通过废旧轮胎、废油等城市废弃资源制备低碳路面材料，结合零碳施工与智能养护技术，打造绿色、耐久、智能化道路基础设施。项目实现道路减碳、资源循环利用及环境净化，推动交通领域向零碳可持续发展转型。</p>
+              <p class="project-desc-en" lang="en">A green road engineering initiative using recycled urban waste materials and intelligent maintenance to reduce infrastructure carbon emissions.</p>
+              <div class="project-actions">
+                <span class="project-tag">绿色交通基础设施</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 10: 白厄一周年线下企划 -->
+          <article class="project-item">
+            <div class="project-num">(10)</div>
+            <div class="project-meta-col">
+              <h3 class="project-name">白厄一周年线下企划</h3>
+              <p class="en-sub" lang="en">Public Display Coordination</p>
+              <p class="project-role-badge">独立统筹与执行 / Solo Project Coordinator</p>
+            </div>
+            <div class="project-desc-col">
+              <p class="project-desc-cn">该项目为个人统筹策划的线下数字大屏联动展示，完成 24 家商场户外大屏的商务对接、素材规格适配与播出监播，所有屏幕均按期顺利落地。</p>
+              <p class="project-desc-en" lang="en">An independent promotional project coordinating outdoor digital displays across 24 shopping centers, managing technical delivery and scheduling.</p>
+              <div class="project-actions">
+                <span class="project-tag">24 家商场大屏顺利落地</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. Experience Section -->
+      <section id="experience" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(03)</div>
+          <h2 class="section-title">教育与经历</h2>
+          <p class="section-title-en" lang="en">EDUCATION & EXPERIENCE</p>
+        </div>
+
+        <div class="exp-timeline">
+          <!-- Education -->
+          <div class="exp-block">
+            <div class="exp-time">2023.09 – 2027.06 (预计)</div>
+            <h3 class="exp-org">长安大学 × 爱尔兰都柏林大学（中外合作办学 4+0 双学位）</h3>
+            <p class="exp-role">工学学士（交通运输）/ 理学学士（交通、城市规划与环境政策）</p>
+            <p class="en-sub" lang="en">Chang'an University × University College Dublin | B.Eng. in Transportation & B.Sc. in Transport, City Planning & Environmental Policy</p>
+            <p class="exp-desc">核心课程：交通建模、城市交通管理与控制、交通规划、GIS 与规划、运筹学与交通工程、智慧城市与智慧交通。</p>
+          </div>
+
+          <!-- Internship 1 -->
+          <div class="exp-block">
+            <div class="exp-time">2026.01 – 2026.02</div>
+            <h3 class="exp-org">厦门路桥工程设计院有限公司（原厦门市惟成市政工程设计院）</h3>
+            <p class="exp-role">交通规划与智能仿真实习生</p>
+            <p class="en-sub" lang="en">Xiamen Weicheng Municipal Engineering Design Institute | Transportation Planning & Simulation Intern</p>
+            <p class="exp-desc">搭建 SUMO 复杂交叉口微观仿真模型，设计交通语义过滤规则剔除旅游大巴停靠延误等异常样本，并在 Synchro 中重优化信号配时方案，使交叉口平均延误从 14.0s 降至 12.5s。</p>
+          </div>
+
+          <!-- Internship 2 -->
+          <div class="exp-block">
+            <div class="exp-time">2025.07 – 2025.08</div>
+            <h3 class="exp-org">天度（厦门）科技股份有限公司</h3>
+            <p class="exp-role">虚拟仿真与 AI 研发实习生</p>
+            <p class="en-sub" lang="en">Tiandu (Xiamen) Technology Co., Ltd. | Virtual Simulation & AI R&D Intern</p>
+            <p class="exp-desc">负责 AI 虚拟仿真教育平台的前端交互界面开发与功能测试，优化三维可视化与交互响应流畅度。</p>
+          </div>
+
+          <!-- Internship 3 -->
+          <div class="exp-block">
+            <div class="exp-time">2025.01 – 2025.02</div>
+            <h3 class="exp-org">龙海泰尔福德汽车电子研发有限公司</h3>
+            <p class="exp-role">汽车智能算法研发实习生</p>
+            <p class="en-sub" lang="en">Longhai Telford Automotive Electronics R&D Co., Ltd. | Automotive Algorithm R&D Intern</p>
+            <p class="exp-desc">处理并可视化整车控制仿真模型测试数据，协助算法工程师排查调试边界控制逻辑。</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+          <a href="assets/files/CV_ZongheWu.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">下载完整 PDF 简历 / Download CV (PDF)</a>
+        </div>
+      </section>
+
+      <!-- 5. Skills Section -->
+      <section id="skills" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(04)</div>
+          <h2 class="section-title">专业能力与技术栈</h2>
+          <p class="section-title-en" lang="en">SKILLS & COMPETENCIES</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Product -->
+          <div class="skill-card">
+            <div class="skill-domain">Product / 产品设计</div>
+            <div class="skill-tags-wrap">
+              <span class="skill-chip">需求分析 / User Research</span>
+              <span class="skill-chip">原型设计 / Wireframing</span>
+              <span class="skill-chip">Agent 交互设计 / Agent UX</span>
+              <span class="skill-chip">需求规格化 / PRD</span>
+            </div>
+          </div>
+
+          <!-- AI & Algorithms -->
+          <div class="skill-card">
+            <div class="skill-domain">AI & Algorithms / 算法</div>
+            <div class="skill-tags-wrap">
+              <span class="skill-chip">图强化学习 / GNN+RL</span>
+              <span class="skill-chip">物理约束网络 / PINN</span>
+              <span class="skill-chip">贝叶斯优化 / Bayesian Opt</span>
+              <span class="skill-chip">Prompt / Tool Use</span>
+            </div>
+          </div>
+
+          <!-- Engineering -->
+          <div class="skill-card">
+            <div class="skill-domain">Engineering / 工程开发</div>
+            <div class="skill-tags-wrap">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">FastAPI</span>
+              <span class="skill-chip">Next.js / React</span>
+              <span class="skill-chip">Three.js</span>
+              <span class="skill-chip">PyQt5</span>
+              <span class="skill-chip">Git</span>
+            </div>
+          </div>
+
+          <!-- Domain -->
+          <div class="skill-card">
+            <div class="skill-domain">Domain / 交通与仿真</div>
+            <div class="skill-tags-wrap">
+              <span class="skill-chip">SUMO 微观仿真</span>
+              <span class="skill-chip">Synchro 信号配时</span>
+              <span class="skill-chip">交通建模 / Modeling</span>
+              <span class="skill-chip">数字孪生 / Digital Twin</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-card">
+            <div class="skill-domain">Tools / 工具生态</div>
+            <div class="skill-tags-wrap">
+              <span class="skill-chip">VS Code / Codex</span>
+              <span class="skill-chip">Figma</span>
+              <span class="skill-chip">Google OR-Tools</span>
+              <span class="skill-chip">PyTorch</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Highlights Section -->
+      <section id="highlights" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(05)</div>
+          <h2 class="section-title">荣誉与亮点</h2>
+          <p class="section-title-en" lang="en">KEY HIGHLIGHTS</p>
+        </div>
+
+        <div class="highlights-list">
+          <div class="highlight-card">
+            <div class="card-num">HIGHLIGHT 01</div>
+            <p class="card-title-cn">IEEE SMC 2026 录用论文（第一作者）</p>
+            <p class="en-sub" lang="en">First-author paper accepted by IEEE SMC 2026 on digital twin calibration.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="card-num">HIGHLIGHT 02</div>
+            <p class="card-title-cn">第十三届“挑战杯”大学生创业计划竞赛 陕西省金奖</p>
+            <p class="en-sub" lang="en">First Prize (Shaanxi Province), 13th Challenge Cup Entrepreneurship Competition.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="card-num">HIGHLIGHT 03</div>
+            <p class="card-title-cn">全国大学生交通运输科技大赛 陕西赛区一等奖 / 三等奖</p>
+            <p class="en-sub" lang="en">First and Third Prizes in Shaanxi Division, National Transport Science Competition.</p>
+          </div>
+
+          <div class="highlight-card">
+            <div class="card-num">HIGHLIGHT 04</div>
+            <p class="card-title-cn">Anima Companion 独立开发上线 4 周，19 名陌生用户付费</p>
+            <p class="en-sub" lang="en">Solo-developed 3D AI companion MVP deployed in 4 weeks, with 19 paying users.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Now Section -->
+      <section id="now" class="section">
+        <div class="section-header-block">
+          <div class="section-idx">(06)</div>
+          <h2 class="section-title">现在的状态</h2>
+          <p class="section-title-en" lang="en">WHAT I AM DOING NOW</p>
+        </div>
+
+        <div class="now-box">
+          <p class="now-status">2026 年秋：正在申请港新方向硕士研究生，同时持续打磨导航智能体与交通 AI 工具。</p>
+          <p class="en-sub" lang="en" style="margin-top: 0.75rem; font-size: 0.9375rem;">Fall 2026: applying to master's programs in Hong Kong and Singapore while refining navigation agents and mobility AI tools.</p>
+        </div>
+      </section>
+
+      <!-- 8. Contact Section -->
+      <section id="contact" class="contact-section">
+        <div class="section-idx">(07) CONTACT</div>
+        <h2 class="section-title">保持联系</h2>
+        
+        <p class="contact-lead">欢迎交流 AI 产品、交通智能体与创造性技术。</p>
+        <p class="contact-lead-en" lang="en">Open to discussions on AI products, mobility agents, and creative technology.</p>
+
+        <div class="email-links-grid">
+          <div>
+            <span class="en-sub" style="color: rgba(244, 241, 234, 0.6); margin-bottom: 0.25rem;">PRIMARY / UCD EMAIL</span>
+            <a href="mailto:zonghe.wu@ucdconnect.ie" class="contact-email-link">zonghe.wu@ucdconnect.ie</a>
+          </div>
+          <div>
+            <span class="en-sub" style="color: rgba(244, 241, 234, 0.6); margin-bottom: 0.25rem;">PERSONAL / QQ EMAIL</span>
+            <a href="mailto:3582584159@qq.com" class="contact-email-link">3582584159@qq.com</a>
+          </div>
+        </div>
+
+        <div class="contact-social-row">
+          <a href="https://github.com/Jonah-Wu23" target="_blank" rel="noopener noreferrer" class="contact-social-item">GitHub ↗</a>
+          <a href="https://space.bilibili.com/328348048" target="_blank" rel="noopener noreferrer" class="contact-social-item">Bilibili / B 站 ↗</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div>
+        <p>© <span id="year">2026</span> 吴宗河 Zonghe Wu · 厦门 / Xiamen, China</p>
       </div>
-      <div class="site-footer__copy">
-        <p>© <span id="year">2026</span> Zonghe Wu · All rights reserved.</p>
+      <div>
+        <p>最后更新 / Last updated: 2026-08-22</p>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
 </body>
 </html>
